@@ -41,9 +41,9 @@ Pod::Spec.new do |s|
   # use SQLCipher and enable -DSQLITE_HAS_CODEC flag
   s.subspec 'SQLCipher' do |ss|
     ss.dependency 'SQLCipher'
-    ss.source_files = 'src/fmdb/FM*.{h,m}'
+    ss.source_files = 'src/fmdb/FM*.{h,m,c}'
     ss.exclude_files = 'src/fmdb.m'
-    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1', 'HEADER_SEARCH_PATHS' => 'SQLCipher' }
+    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1'}
   end
   
 end
