@@ -12,8 +12,9 @@ Pod::Spec.new do |s|
   # use the built-in library version of sqlite3
   s.subspec 'standard' do |ss|
     ss.library = 'sqlite3'
-    ss.source_files = 'src/fmdb/FM*.{h,m}'
+    ss.source_files = 'src/fmdb/FM*.{h,m,c}'
     ss.exclude_files = 'src/fmdb.m'
+    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1'}
   end
 
   # use the built-in library version of sqlite3 with custom FTS tokenizer source files
