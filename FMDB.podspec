@@ -50,7 +50,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'src/fmdb/FM*.{h,m,c}'
     ss.exclude_files = 'src/fmdb.m'
     ss.header_dir = 'fmdb'
-    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1 -DSQLCIPHER_CRYPTO', 'HEADER_SEARCH_PATHS' => 'SQLCipher' }
+    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1 -DSQLCIPHER_CRYPTO'}
   end
   
 end
