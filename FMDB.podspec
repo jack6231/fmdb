@@ -12,9 +12,12 @@ Pod::Spec.new do |s|
   # use the built-in library version of sqlite3
   s.subspec 'standard' do |ss|
     ss.library = 'sqlite3'
-    ss.source_files = 'src/fmdb/FM*.{h,m,c}'
+    ss.source_files = 'src/fmdb/*.{h,m,c}'
     ss.exclude_files = 'src/fmdb.m'
-    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1'}
+    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1 -DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2 -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_STAT3 -DSQLITE_ENABLE_STAT4 -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_LOAD_EXTENSION -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_FTS4_UNICODE61 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_UNLOCK_NOTIFY -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_FTS5 -DSQLCIPHER_CRYPTO_CC -DHAVE_USLEEP=1 -DSQLITE_MAX_VARIABLE_NUMBER=99999', "GCC_PREPROCESSOR_DEFINITIONS": "$(inherited) SQLITE_HAS_CODEC=1"}
+    ss.frameworks = ['Foundation', 'Security']
+    ss.compiler_flags = ['-DNDEBUG', '-DSQLITE_HAS_CODEC', '-DSQLITE_TEMP_STORE=2', '-DSQLITE_SOUNDEX',
+    '-DSQLITE_THREADSAFE', '-DSQLITE_ENABLE_RTREE', '-DSQLITE_ENABLE_STAT3', '-DSQLITE_ENABLE_STAT4', '-DSQLITE_ENABLE_COLUMN_METADATA', '-DSQLITE_ENABLE_MEMORY_MANAGEMENT', '-DSQLITE_ENABLE_LOAD_EXTENSION', '-DSQLITE_ENABLE_FTS4', '-DSQLITE_ENABLE_FTS4_UNICODE61', '-DSQLITE_ENABLE_FTS3_PARENTHESIS', '-DSQLITE_ENABLE_UNLOCK_NOTIFY', '-DSQLITE_ENABLE_JSON1', '-DSQLITE_ENABLE_FTS5', '-DSQLCIPHER_CRYPTO_CC', '-DHAVE_USLEEP=1', '-DSQLITE_MAX_VARIABLE_NUMBER=99999']
   end
 
   # use the built-in library version of sqlite3 with custom FTS tokenizer source files
@@ -44,7 +47,7 @@ Pod::Spec.new do |s|
     ss.dependency 'SQLCipher'
     ss.source_files = 'src/fmdb/FM*.{h,m,c}'
     ss.exclude_files = 'src/fmdb.m'
-    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1'}
+    ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1', 'HEADER_SEARCH_PATHS' => 'SQLCipher'}
   end
   
 end
